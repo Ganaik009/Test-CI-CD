@@ -18,11 +18,19 @@ steps:
     echo See https://aka.ms/yaml
   displayName: 'Run a multi-line script'
 
-- task: PublishPipelineArtifact@1
+- task: ArchiveFiles@2
   inputs:
-    targetPath: $(Build.ArtifactStagingDirectory)
-    artifactName: WebApp
+    rootFolderOrFile: '$(Build.SourcesDirectory)'
+    includeRootFolder: false 
+    archiveType: 'zip'
+    archiveFile: '$(Build.ArtifactStagingDirectory)/Ganaik009-Test-CI-CD.zip'
+    replaceExistingArchive: true
 
-- task: DownloadPipelineArtifact@2
+- task: UniversalPackages@0
+  displayName: 'Universal publish'
   inputs:
-    artifact: WebApp
+    command: publish
+    publishDirectory: '$(Build.ArtifactStagingDirectory)'
+    vstsFeedPublish: 'Ganaik009/Test-CI-CD'
+    vstsFeedPackagePublish: 'hello-world'
+    packagePublishDescription: 'Publish backup repo package'
