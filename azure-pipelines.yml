@@ -31,6 +31,6 @@ steps:
   inputs:
     command: publish
     publishDirectory: '$(Build.ArtifactStagingDirectory)'
-    vstsFeedPublish: 'Ganaik009/Test-CI-CD'
-    vstsFeedPackagePublish: 'hello-world'
+    vstsFeedPublish: 'Ganaik009/testing'
+    vstsFeedPackagePublish: 'testing'
     packagePublishDescription: 'Publish backup repo package'
