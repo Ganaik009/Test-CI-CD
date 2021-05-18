@@ -22,3 +22,7 @@ steps:
   inputs:
     targetPath: $(Build.ArtifactStagingDirectory)
     artifactName: WebApp
+
+- task: DownloadPipelineArtifact@2
+  inputs:
+    artifact: WebApp
