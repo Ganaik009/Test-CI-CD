@@ -9,20 +9,7 @@ trigger:
 pool:
   vmImage: ubuntu-latest
 
-steps:
-- task: ArchiveFiles@2
+- task: PublishPipelineArtifact@1
   inputs:
-    rootFolderOrFile: '$(Build.SourcesDirectory)'
-    includeRootFolder: false 
-    archiveType: 'zip'
-    archiveFile: '$(Build.ArtifactStagingDirectory)/Hello-world-CI-Pradeep_15042021.zip'
-    replaceExistingArchive: true
-
-- task: UniversalPackages@0
-  displayName: 'Universal publish'
-  inputs:
-    command: publish
-    publishDirectory: '$(Build.ArtifactStagingDirectory)'
-    vstsFeedPublish: 'PradeepKumarBK/Hello-world'
-    vstsFeedPackagePublish: 'hello-world'
-    packagePublishDescription: 'Publish backup repo package'
+    targetPath: $(System.DefaultWorkingDirectory)/bin/WebApp
+    artifactName: WebApp
